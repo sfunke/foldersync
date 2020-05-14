@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # defaults
 DEF_REMOTE_MAC_USER=$USER
 DEF_REMOTE_MAC_IP=$remote_ip
@@ -8,6 +9,7 @@ echo "================="
 read -e -p "👉 User des Remote Macs (default: $DEF_REMOTE_MAC_USER):" REMOTE_MAC_USER
 read -e -p "👉 IP des Remote Macs (default: $DEF_REMOTE_MAC_IP):" REMOTE_MAC_IP
 
+# check variables
 [ -z "${REMOTE_MAC_IP}" ] && REMOTE_MAC_IP="${DEF_REMOTE_MAC_IP}"
 if [ -z "${REMOTE_MAC_IP}" ]
 then
@@ -36,12 +38,15 @@ while IFS= read -r line; do
     echo "==================================================="
     echo "$line"
     echo "==================================================="
+
+    # run rsync
     rsync -vaXhP \
     --delete \
     --exclude=.DS_Store \
     --exclude="node_modules" \
     --rsync-path=/usr/local/bin/rsync \
     $line "$REMOTE_MAC_USER@$REMOTE_MAC_IP:$(dirname $line)/"
+    
 done < ./synclist.txt
 
 echo ""
