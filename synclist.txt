@@ -1,0 +1,5 @@
+# generic files
+/Users/steffenfunke/Desktop/foldersync
+/Users/steffenfunke/Desktop/wiki
+
+# App Preferences & Application Support
