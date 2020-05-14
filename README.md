@@ -2,6 +2,11 @@
 
 Simple Tool to sync certain folders specified in synclist from one Mac to another. 
 
+### How it works
+- `synclist.txt` contains a list of folders / files and is processed line by line.
+- Each File/folder will be replicated on Target Computer at the same location, via `rsync`.
+- Attributes and Permissions will be preserved
+
 ### Usage
 ```bash
 $ cd "<foldersync dir>"
